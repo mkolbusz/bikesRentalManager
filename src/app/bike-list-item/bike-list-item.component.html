@@ -1,0 +1,18 @@
+<div class="card">
+    <div class="card-body" [class.text-secondary]="!bike.isAvailable()">
+      <h4 class="card-title">{{ bike.name | uppercase }} </h4>
+      <p class="card-text">{{ bike.description }}</p>
+      <p class="text-right font-weight-bold">Price: {{ bike.price | currency:'EUR':true:'1.2-2' }}</p>
+      <div class="input-group" *ngIf="bike.isAvailable()">
+        <span class="input-group-addon">Qty</span>
+        <input type="number" [max]="bike.qty" class="form-control" placeholder="1" aria-label="1" value="1">
+        <span class="input-group-addon" [class.good]="bike.qty >= 10" [class.bad]="bike.qty < 10" >of&nbsp;{{bike.qty}}</span>
+        <span class="input-group-btn">
+            <button class="btn btn-secondary" type="button">Buy!</button>
+          </span>
+      </div>
+      <div *ngIf="!bike.isAvailable()">
+        <p>Sold out!</p>
+      </div>
+    </div>
+</div>
