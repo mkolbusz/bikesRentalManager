@@ -1,15 +1,23 @@
 export class Bike {
-    
+    qty: number = 0;
+    isSoldOut: boolean = false;
+
     constructor(
         private id: number,
         private name: string,
         private description: string,
-        private qty: number,
-        private price: number) {
+        public qtyAvailable: number,
+        private price: number,
+        private image: string
+    ) {
     }
     
 
     isAvailable(){
-        return this.qty > 0;
+        return !this.isSoldOut;
+    }
+
+    getImageUrl() {
+        return '/assets/images/bikes/' + this.image;
     }
 }
