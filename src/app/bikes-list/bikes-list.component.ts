@@ -10,12 +10,20 @@ import { BikesService } from '../services/bikes.service';
 export class BikesListComponent implements OnInit {
 
   bikes: Bike[];
+  numberOfBikes: number;
   
   constructor(bikesService: BikesService) {
     this.bikes = bikesService.getBikes();
    }
 
   ngOnInit() {
+    this.numberOfBikes = this.bikes.reduce((prev, el) => {
+        return prev + el.qtyAvailable;
+    }, 0)
+  }
+
+  qtyChange(qty:number) {
+    this.numberOfBikes -= qty;
   }
 
 }

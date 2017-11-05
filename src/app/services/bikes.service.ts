@@ -4,7 +4,7 @@ import { Bike } from '../bike';
 
 @Injectable()
 export class BikesService {
-
+  
   constructor() { }
 
   getBikes():Bike[] {

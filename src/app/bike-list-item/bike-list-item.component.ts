@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Bike } from '../bike';
 
 @Component({
@@ -9,6 +9,8 @@ import { Bike } from '../bike';
 export class BikeListItemComponent implements OnInit {
 
   @Input('bike') bike: Bike;
+  @Output('qtyChange') qtyChangeEvent = new EventEmitter<number>();
+
   isDescriptionVisible: boolean = false
 
   constructor() { }
@@ -24,6 +26,7 @@ export class BikeListItemComponent implements OnInit {
     if(this.bike.qtyAvailable > 0) {
       this.bike.qty++;
       this.bike.qtyAvailable--;
+      this.qtyChangeEvent.emit(1);
     }
   }
 
@@ -31,6 +34,7 @@ export class BikeListItemComponent implements OnInit {
     if(this.bike.qty > 0){
       this.bike.qty--;
       this.bike.qtyAvailable++;
+      this.qtyChangeEvent.emit(-1);
     }
   }
 

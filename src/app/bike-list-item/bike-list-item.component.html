@@ -11,12 +11,11 @@
 
             <span class="input-group-addon" [class.good]="bike.qtyAvailable >= 10" [class.bad]="bike.qtyAvailable < 10" >of&nbsp;{{bike.qtyAvailable}}</span>
             <span class="input-group-btn">
-                <button class="btn btn-secondary" type="button" (click)="decreaseQty()" *ngIf="bike.qty > 0">-</button>
-                <button class="btn btn-secondary" type="button" (click)="increaseQty()" *ngIf="bike.qtyAvailable > 0">+</button>
-                
+                <button class="btn btn-secondary" type="button" (click)="increaseQty()" *ngIf="bike.qtyAvailable > 0"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+                <button class="btn btn-secondary" type="button" (click)="decreaseQty()" *ngIf="bike.qty > 0"><i class="fa fa-minus-circle" aria-hidden="true"></i></button>
             </span>
           </div>
-          <button class="btn btn-info" type="button" (click)="addToCart()">Add to cart</button>
+          <button class="btn btn-info" type="button" (click)="addToCart()"><i class="fa fa-cart-plus" aria-hidden="true"></i>&nbsp;Add to cart</button>
           <div *ngIf="!bike.isAvailable()">
             <p>Sold out!</p>
           </div>
