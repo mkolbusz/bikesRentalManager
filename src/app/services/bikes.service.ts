@@ -12,11 +12,7 @@ export class BikesService {
   }
 
   createBikes():Bike[] {
-    let bikes:Bike[] = [];
-    for(let bike of BIKES) {
-      bikes.push(new Bike(bike.id, bike.name, bike.description, bike.qty, bike.price, bike.image));
-    }
-    return bikes;
+    return BIKES.map(bike => new Bike(bike.id, bike.name, bike.description, bike.qty, bike.price, bike.image));
   }
 
 }
